@@ -6,8 +6,8 @@ from rpi_rf import RFDevice
 import Codes
 
 GPIO = 17
-PROTOCOL = "default"
-PULSELENGTH = "default"
+PROTOCOL = 1
+PULSELENGTH = 350
 MQTT_HOST = "192.168.10.23"
 TOPIC_SWITCH_COMMAND = "de.scyv/smartswitch/cmd"
 TOPIC_SWITCH_STATUS = "de.scyv/smartswitch/status"
