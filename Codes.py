@@ -1,0 +1,25 @@
+CODE_A_ON = 1312081   # 0x14 05 51
+CODE_A_OFF = 1312084  # 0x14 05 54
+
+CODE_B_ON = 1315153   # 0x14 11 51
+CODE_B_OFF = 1315156  # 0x14 11 54
+
+CODE_C_ON = 1315921   # 0x14 14 51
+CODE_C_OFF = 1315924  # 0x14 14 54
+
+CODE_D_ON = 1316113   # 0x14 15 11
+CODE_D_OFF = 1316116  # 0x14 15 14
+
+CODES_ON = {
+    "A": CODE_A_ON,
+    "B": CODE_B_ON,
+    "C": CODE_C_ON,
+    "D": CODE_D_ON,
+}
+
+CODES_OFF = {
+    "A": CODE_A_OFF,
+    "B": CODE_B_OFF,
+    "C": CODE_C_OFF,
+    "D": CODE_D_OFF,
+}
