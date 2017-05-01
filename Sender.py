@@ -24,8 +24,8 @@ def on_mqtt_connect(client, userdata, flags, rc):
 def on_mqtt_message(client, userdata, msg):
     payload_json = json.loads(msg.payload.decode('ascii'))
 
-    switch = payload_json.switch
-    status = payload_json.status
+    switch = payload_json["switch"]
+    status = payload_json["status"]
 
     code = None
     if (status == "on"):
