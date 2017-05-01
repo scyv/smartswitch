@@ -49,7 +49,8 @@ def get_status_from_code(code):
 
 def code_received(code):
     status = get_status_from_code(code)
-    mqtt_client.publish(TOPIC_SWITCH_STATUS, json.dumps(status))
+    if status:
+        mqtt_client.publish(TOPIC_SWITCH_STATUS, json.dumps(status))
 
 
 # Create an MQTT client and attach our routines to it.
