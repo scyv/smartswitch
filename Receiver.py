@@ -63,6 +63,8 @@ logging.basicConfig(level=logging.INFO, datefmt='%Y-%m-%d %H:%M:%S',
 signal.signal(signal.SIGINT, exithandler)
 rfdevice = RFDevice(GPIO)
 rfdevice.enable_rx()
+mqtt_client.connect(MQTT_HOST, 1883, 60)
+
 logging.info("Listening for codes on GPIO " + str(GPIO))
 timestamp = None
 mqtt_client.loop_start()
