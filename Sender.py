@@ -1,21 +1,21 @@
-# import argparse
 import logging
-import Codes
-
-from rpi_rf import RFDevice
 import paho.mqtt.client as mqtt
 import json
+from rpi_rf import RFDevice
+
+import Codes
 
 GPIO = 17
 PROTOCOL = "default"
 PULSELENGTH = "default"
-MQTT_HOST = "192.168.10.25"
+MQTT_HOST = "192.168.10.23"
 TOPIC_SWITCH_COMMAND = "de.scyv/smartswitch/cmd"
 TOPIC_SWITCH_STATUS = "de.scyv/smartswitch/status"
 
+
 # The callback for when the client receives a CONNACK response from the server.
 def on_mqtt_connect(client, userdata, flags, rc):
-    print("Connected to MQTT with result code " + str(rc))
+    logging.info("Connected to MQTT with result code " + str(rc))
     # listen for commands coming from the mqtt bus
     client.subscribe(TOPIC_SWITCH_COMMAND)
 
@@ -38,26 +38,13 @@ def on_mqtt_message(client, userdata, msg):
         rfdevice.tx_code(code, PROTOCOL, PULSELENGTH)
 
 
-
 # Create an MQTT client and attach our routines to it.
 mqtt_client = mqtt.Client()
 mqtt_client.on_connect = on_mqtt_connect
 mqtt_client.on_message = on_mqtt_message
 
-
 logging.basicConfig(level=logging.INFO, datefmt='%Y-%m-%d %H:%M:%S',
                     format='%(asctime)-15s - [%(levelname)s] %(module)s: %(message)s', )
-
-# parser = argparse.ArgumentParser(description='Sends a decimal code via a 433/315MHz GPIO device')
-# parser.add_argument('code', metavar='CODE', type=int,
-#                    help="Decimal code to send")
-# parser.add_argument('-g', dest='gpio', type=int, default=17,
-#                    help="GPIO pin (Default: 17)")
-# parser.add_argument('-p', dest='pulselength', type=int, default=None,
-#                    help="Pulselength (Default: 350)")
-# parser.add_argument('-t', dest='protocol', type=int, default=None,
-#                    help="Protocol (Default: 1)")
-# args = parser.parse_args()
 
 rfdevice = RFDevice(GPIO)
 rfdevice.enable_tx()
