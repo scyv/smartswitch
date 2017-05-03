@@ -1,0 +1,21 @@
+.row {
+    margin-bottom: 10px;
+}
+
+.askForUsername {
+    margin-top: 20%;
+    text-align: center;
+}
+
+.askForUsername .userNameInput > div {
+    margin-left: 50%;
+    transform: translateX(-50%);
+}
+
+.proposals-table td.actions {
+    text-align: right;
+}
+
+.location-label, .btn-edit-proposal {
+    cursor: pointer;
+}
